@@ -57,7 +57,7 @@ const main = async () => {
   deps
     .filter((value, index, self) => self.indexOf(value) === index)
     .map(dep => {
-      const dirName = dep.split('@').shift()
+      const dirName = dep.split(/(?!^)@/).shift()
       const dir = resolve(rootDir, 'node_modules', dirName)
       if (!existsSync(dir)) return
 
